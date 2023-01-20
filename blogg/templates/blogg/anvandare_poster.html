@@ -1,0 +1,28 @@
+{% extends "blogg/mall.html" %}
+
+{% block innehall%}
+    <h1>författare {{view.kwargs.username}}, poster {{page_obj.paginator.count}}</h1>
+    {%for post in poster%}
+        <article class="media content-section">
+          <img class="rounded-circle account-img" src="{{post.forfattare.profil.image.url}}" alt="författare profilbild">
+          <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.forfattare }}</a>
+            <small class="text-muted">{{ post.datum_skapad|date:"l d M Y"}}</small>
+          </div>
+          <h2><a class="article-title" href="{%url 'post-sida' post.id %}">{{ post.titel }}</a></h2>
+          <p class="article-content">{{ post.innehall }}</p>
+        </div>
+      </article>
+    {%endfor%}
+    {%if is_paginated%}
+      {%if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">|<--</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}"><--</a>
+      {%endif%}
+      {%if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">--></a>
+        <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages}}">-->|</a>
+      {%endif%} 
+    {%endif%}
+{% endblock innehall%}

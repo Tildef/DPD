@@ -1,0 +1,22 @@
+{% extends "blogg/mall.html" %}
+{% load crispy_forms_tags %}
+
+{% block innehall %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">logga in</legend>
+            {{ form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">logga in</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Har du inte ett konto? <a class="ml-2" href="{%url 'registrera'%}">registrera</a>
+        </small>
+    </div>
+</div>
+{% endblock innehall%}

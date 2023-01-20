@@ -1,0 +1,21 @@
+{% extends 'blogg/mall.html' %}
+
+{% block innehall %}
+    <article class="media content-section">
+      <img class="rounded-circle account-img" src="{{object.forfattare.profil.image.url}}" alt="författare profilbild">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.forfattare }}</a>
+            <small class="text-muted">{{ object.datum_skapad|date:"d.m.Y" }}</small>
+            {%if object.forfattare == user%}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{%url 'post-uppdatera' object.id %}">uppdatera</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{%url 'post-radera' object.id %}">radera</a>
+              </div>
+            {%endif%}
+          </div>
+          <h2 class="article-title">{{ object.titel }}</h2>
+          <p class="article-content">{{ object.innehall }}</p>
+        </div>
+      </article>
+{% endblock innehall %}
