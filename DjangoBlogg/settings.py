@@ -109,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'sv-fi'
+LANGUAGE_CODE = 'sv'
 
-TIME_ZONE = 'Europe/Helsinki'
+TIME_ZONE = 'Europe/Mariehamn'
 
 USE_I18N = True
 
